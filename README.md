@@ -9,21 +9,21 @@ Welcome to **TechBlog**, the ultimate backend for your futuristic, sleek, and po
 <details>
   <summary>Click to expand and see what makes TechBlog special!</summary>
 
-  - **🔐 Secure User Authentication & Authorization:** Robust, role-based access control (RBAC) ensures that your users' data is safe and that they only access what they're supposed to.
-  - **✍️ Intuitive Post Management:** A full CRUD (Create, Read, Update, Delete) API for blog posts, with support for drafts, scheduled publishing, and revisions.
-  - **🖼️ Rich Media Support:** Seamlessly upload, store, and manage images, videos, and other media to bring your articles to life.
-  - **🏷️ Dynamic Tagging & Categorization:** Organize your content with a flexible and powerful tagging and categorization system.
-  - **👍 Interactive Comments & Reactions:** Foster a vibrant community with a nested commenting system and a variety of user reactions.
-  - **🔍 Powerful Search:** A lightning-fast, full-text search engine to help users find exactly what they're looking for.
-  - **📈 Analytics & Insights:** A comprehensive analytics dashboard to track your blog's performance, including views, likes, and comments.
-  - **🎨 Customizable Theming:** A flexible theming engine that allows you to create a unique look and feel for your blog.
-  - **📱 Responsive Design:** A mobile-first design that ensures your blog looks great on any device.
-  - **🌐 SEO Optimized:** Built-in SEO features to help your blog rank higher in search results.
-  - **RSS & Atom Feeds:** Keep your readers up-to-date with the latest content through RSS and Atom feeds.
-  - **Social Sharing:** Easily share your articles on social media with built-in sharing buttons.
-  - **Multi-Language Support:** Reach a global audience with support for multiple languages.
-  - **Extensible Plugin Architecture:** Extend the functionality of your blog with a powerful plugin architecture.
-  - **Developer-Friendly API:** A well-documented, easy-to-use API that makes it a breeze to build custom integrations.
+- **🔐 Secure User Authentication & Authorization:** Robust, role-based access control (RBAC) ensures that your users' data is safe and that they only access what they're supposed to.
+- **✍️ Intuitive Post Management:** A full CRUD (Create, Read, Update, Delete) API for blog posts, with support for drafts, scheduled publishing, and revisions.
+- **🖼️ Rich Media Support:** Seamlessly upload, store, and manage images, videos, and other media to bring your articles to life.
+- **🏷️ Dynamic Tagging & Categorization:** Organize your content with a flexible and powerful tagging and categorization system.
+- **👍 Interactive Comments & Reactions:** Foster a vibrant community with a nested commenting system and a variety of user reactions.
+- **🔍 Powerful Search:** A lightning-fast, full-text search engine to help users find exactly what they're looking for.
+- **📈 Analytics & Insights:** A comprehensive analytics dashboard to track your blog's performance, including views, likes, and comments.
+- **🎨 Customizable Theming:** A flexible theming engine that allows you to create a unique look and feel for your blog.
+- **📱 Responsive Design:** A mobile-first design that ensures your blog looks great on any device.
+- **🌐 SEO Optimized:** Built-in SEO features to help your blog rank higher in search results.
+- **RSS & Atom Feeds:** Keep your readers up-to-date with the latest content through RSS and Atom feeds.
+- **Social Sharing:** Easily share your articles on social media with built-in sharing buttons.
+- **Multi-Language Support:** Reach a global audience with support for multiple languages.
+- **Extensible Plugin Architecture:** Extend the functionality of your blog with a powerful plugin architecture.
+- **Developer-Friendly API:** A well-documented, easy-to-use API that makes it a breeze to build custom integrations.
 
 </details>
 
@@ -83,5 +83,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 Give a ⭐️ if this project helped you!
 
 ---
-
-> **Note:** This is a fictional `README.md` for a project that is still in its early stages. The features listed are not yet implemented.
