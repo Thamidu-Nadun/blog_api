@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import nadun_blog.DTO.Response;
 import nadun_blog.DTO.UserDTO;
 import nadun_blog.service.UserService;
-import nadun_blog.util.ResponseCode;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,11 +33,11 @@ public class UserController {
         Response response = new Response();
         try {
             List<UserDTO> userList = userService.getUsers();
-            response.setResponse(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage(), userList);
+            response.setResponse(HttpStatus.OK.value(), HttpStatus.OK.getReasonPhrase(), userList);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-            response.setResponse(ResponseCode.INTERNAL_SERVER_ERROR.getCode(),
-                    ResponseCode.INTERNAL_SERVER_ERROR.getMessage(), null);
+            response.setResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -49,15 +48,15 @@ public class UserController {
         try {
             UserDTO user = userService.addUser(userDTO);
             if (user != null) {
-                response.setResponse(ResponseCode.CREATED.getCode(), ResponseCode.CREATED.getMessage(), user);
+                response.setResponse(HttpStatus.CREATED.value(), HttpStatus.CREATED.getReasonPhrase(), user);
                 return new ResponseEntity<>(response, HttpStatus.CREATED);
             } else {
-                response.setResponse(ResponseCode.BAD_REQUEST.getCode(), ResponseCode.BAD_REQUEST.getMessage(), null);
+                response.setResponse(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null);
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
-            response.setResponse(ResponseCode.INTERNAL_SERVER_ERROR.getCode(),
-                    ResponseCode.INTERNAL_SERVER_ERROR.getMessage(), null);
+            response.setResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -71,12 +70,12 @@ public class UserController {
                 response.setResponse(HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED.getReasonPhrase(), updatedUser);
                 return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
             } else {
-                response.setResponse(ResponseCode.NOT_FOUND.getCode(), ResponseCode.NOT_FOUND.getMessage(), null);
+                response.setResponse(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.getReasonPhrase(), null);
                 return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            response.setResponse(ResponseCode.INTERNAL_SERVER_ERROR.getCode(),
-                    ResponseCode.INTERNAL_SERVER_ERROR.getMessage(), null);
+            response.setResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -91,12 +90,12 @@ public class UserController {
                         deletedUser);
                 return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
             } else {
-                response.setResponse(ResponseCode.NOT_FOUND.getCode(), ResponseCode.NOT_FOUND.getMessage(), null);
+                response.setResponse(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.getReasonPhrase(), null);
                 return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            response.setResponse(ResponseCode.INTERNAL_SERVER_ERROR.getCode(),
-                    ResponseCode.INTERNAL_SERVER_ERROR.getMessage(), null);
+            response.setResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
