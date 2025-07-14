@@ -1,5 +1,7 @@
 package nadun_blog.model;
 
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,6 +16,6 @@ import lombok.NoArgsConstructor;
 public class Permissions {
     @Id
     @GeneratedValue
-    private Long id;
+    private UUID id;
     private String name;
 }
