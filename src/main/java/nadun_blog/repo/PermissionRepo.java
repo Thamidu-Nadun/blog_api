@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import nadun_blog.model.Permissions;
 
 @Repository
-public interface PermissionRepo extends JpaRepository<Permissions, Long> {
+public interface PermissionRepo extends JpaRepository<Permissions, Integer> {
 }

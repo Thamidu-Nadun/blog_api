@@ -8,8 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +48,7 @@ public class RoleController {
     }
 
     @PostMapping("/saverole")
-    public ResponseEntity<Response> saveRole(RoleDTO roleDTO) {
+    public ResponseEntity<Response> saveRole(@RequestBody RoleDTO roleDTO) {
         Response response = new Response();
         try {
             RoleDTO savedRole = roleService.saveRole(roleDTO);
@@ -66,7 +68,7 @@ public class RoleController {
     }
 
     @PutMapping("/updaterole/{id}")
-    public ResponseEntity<Response> updateRole(@RequestParam Long id, RoleDTO roleDTO) {
+    public ResponseEntity<Response> updateRole(@PathVariable Integer id, @RequestBody RoleDTO roleDTO) {
         Response response = new Response();
         try {
             RoleDTO updatedRole = roleService.updateRole(id, roleDTO);
@@ -86,7 +88,7 @@ public class RoleController {
     }
 
     @DeleteMapping("/deleterole/{id}")
-    public ResponseEntity<Response> deleteRole(@RequestParam Long id) {
+    public ResponseEntity<Response> deleteRole(@PathVariable Integer id) {
         Response response = new Response();
         try {
             boolean isDeleted = roleService.deleteRole(id);

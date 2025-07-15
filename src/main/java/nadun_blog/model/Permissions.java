@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class Permissions {
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     private String name;
 }

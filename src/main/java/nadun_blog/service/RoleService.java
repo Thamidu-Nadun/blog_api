@@ -1,6 +1,7 @@
 package nadun_blog.service;
 
 import java.lang.reflect.Type;
+import java.util.HashSet;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -9,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nadun_blog.DTO.RoleDTO;
+import nadun_blog.model.Permissions;
 import nadun_blog.model.Role;
 import nadun_blog.repo.RoleRepo;
+import nadun_blog.util.exceptions.DataSaveFailureException;
 
 @Service
 public class RoleService {
@@ -43,7 +46,7 @@ public class RoleService {
      * @param id
      * @return RoleDTO | null
      */
-    public RoleDTO getRoleById(Long id) {
+    public RoleDTO getRoleById(Integer id) {
         try {
             return modelMapper.map(roleRepo.findById(id).orElse(null), RoleDTO.class);
         } catch (Exception e) {
@@ -59,10 +62,17 @@ public class RoleService {
      * @return RoleDTO | null
      */
     public RoleDTO saveRole(RoleDTO roleDTO) {
+        HashSet<Permissions> defaultPermissions = new HashSet<>();
         try {
-            Role role = modelMapper.map(roleDTO, Role.class);
+            Role role = new Role(null, roleDTO.getName() != null ? roleDTO.getName() : "User", defaultPermissions);
             Role savedRole = roleRepo.save(role);
+            if (savedRole == null) {
+                throw new DataSaveFailureException();
+            }
             return modelMapper.map(savedRole, RoleDTO.class);
+        } catch (DataSaveFailureException e) {
+            e.printStackTrace();
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -76,11 +86,12 @@ public class RoleService {
      * @param roleDTO
      * @return RoleDTO | null
      */
-    public RoleDTO updateRole(Long id, RoleDTO roleDTO) {
+    public RoleDTO updateRole(Integer id, RoleDTO roleDTO) {
         try {
             Role existingRole = roleRepo.findById(id).orElse(null);
             if (existingRole != null) {
-                existingRole.setName(roleDTO.getName());
+                existingRole.setName(roleDTO.getName() != null && !roleDTO.getName().isBlank() ? roleDTO.getName()
+                        : existingRole.getName());
                 Role updatedRole = roleRepo.save(existingRole);
                 return modelMapper.map(updatedRole, RoleDTO.class);
             } else {
@@ -98,7 +109,7 @@ public class RoleService {
      * @param id
      * @return boolean
      */
-    public boolean deleteRole(Long id) {
+    public boolean deleteRole(Integer id) {
         try {
             if (roleRepo.existsById(id)) {
                 roleRepo.deleteById(id);

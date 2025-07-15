@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Role {
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     private String name;
 
     @ManyToMany

@@ -1,5 +1,6 @@
 package nadun_blog.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import nadun_blog.DTO.Response;
 import nadun_blog.service.PermissionService;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,11 +33,11 @@ public class PermissionController {
         Response response = new Response();
         try {
             List<PermissionDTO> permission_list = permissionService.getPermissions();
-            if (permission_list != null && !permission_list.isEmpty()) {
+            if (!permission_list.isEmpty()) {
                 response.setResponse(HttpStatus.OK.value(), HttpStatus.OK.getReasonPhrase(), permission_list);
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
-                response.setResponse(HttpStatus.NOT_FOUND.value(), "No permissions found", new PermissionDTO[0]);
+                response.setResponse(HttpStatus.NOT_FOUND.value(), "No permissions found", Collections.emptyList());
                 return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
             }
 
@@ -63,13 +64,14 @@ public class PermissionController {
         } catch (Exception e) {
             e.printStackTrace();
             response.setResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), e.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PutMapping("/updatepermission/{id}")
-    public ResponseEntity<Response> updatePermission(@RequestParam Long id, @RequestBody PermissionDTO permissionDTO) {
+    public ResponseEntity<Response> updatePermission(@PathVariable Integer id,
+            @RequestBody PermissionDTO permissionDTO) {
         Response response = new Response();
         try {
             PermissionDTO updatedPermission = permissionService.updatePermission(id, permissionDTO);
@@ -89,7 +91,7 @@ public class PermissionController {
     }
 
     @DeleteMapping("/deletepermission/{id}")
-    public ResponseEntity<Response> deletePermission(@RequestParam Long id) {
+    public ResponseEntity<Response> deletePermission(@PathVariable int id) {
         Response response = new Response();
         try {
             PermissionDTO deleted_permission = permissionService.deletePermission(id);

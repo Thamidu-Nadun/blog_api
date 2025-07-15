@@ -43,7 +43,7 @@ public class PermissionService {
      * @param id
      * @return
      */
-    public Permissions getPermissionById(Long id) {
+    public Permissions getPermissionById(int id) {
         try {
             return permissionRepo.findById(id).orElse(null);
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class PermissionService {
      * @return
      */
     public PermissionDTO savePermission(PermissionDTO permissionDTO) {
-        Permissions permission = modelMapper.map(permissionDTO, Permissions.class);
+        Permissions permission = new Permissions(null, permissionDTO.getName() != null ? permissionDTO.getName() : "");
         return modelMapper.map(permissionRepo.save(permission), PermissionDTO.class);
     }
 
@@ -70,7 +70,7 @@ public class PermissionService {
      * @param permissionDTO
      * @return
      */
-    public PermissionDTO updatePermission(Long id, PermissionDTO permissionDTO) {
+    public PermissionDTO updatePermission(int id, PermissionDTO permissionDTO) {
         try {
             Permissions existingPermission = permissionRepo.findById(id).orElse(null);
             if (existingPermission != null) {
@@ -92,7 +92,7 @@ public class PermissionService {
      * @param id
      * @return
      */
-    public PermissionDTO deletePermission(Long id) {
+    public PermissionDTO deletePermission(int id) {
         try {
             Permissions permission = permissionRepo.findById(id).orElse(null);
             if (permission != null) {
