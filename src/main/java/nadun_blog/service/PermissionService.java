@@ -110,7 +110,7 @@ public class PermissionService {
 
     public HashSet<Permissions> getDefaultPermissions() {
         HashSet<Permissions> permissions = new HashSet<>();
-        Permissions read_post = permissionRepo.findById(1)
+        Permissions read_post = permissionRepo.findByName("read_post")
                 .orElseGet(
                         () -> modelMapper.map(savePermission(new PermissionDTO(null, "read_post")), Permissions.class));
         permissions.add(read_post);
