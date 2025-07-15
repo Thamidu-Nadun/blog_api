@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Blog",
     "collectionId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
-    "dateExported": "2025-07-14T18:20:30.669Z",
+    "dateExported": "2025-07-15T18:01:03.271Z",
     "version": "1.2",
     "folders": [
         {
@@ -18,6 +18,20 @@
             "containerId": "",
             "created": "2025-07-14T18:17:47.211Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "37ee0a68-c7d2-47d2-9acc-1ccffdb28c62",
+            "name": "Role",
+            "containerId": "",
+            "created": "2025-07-15T16:47:39.148Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "26f890d4-f0b5-41b0-ba4e-7f508c53c1d3",
+            "name": "Permission",
+            "containerId": "",
+            "created": "2025-07-15T16:47:47.139Z",
+            "sortNum": 40000
         }
     ],
     "requests": [
@@ -78,7 +92,123 @@
             "created": "2025-07-14T18:16:48.744Z",
             "modified": "2025-07-14T18:16:48.744Z",
             "headers": []
+        },
+        {
+            "_id": "a4a4f94f-d8fc-4dc8-abad-1098d25fce17",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "26f890d4-f0b5-41b0-ba4e-7f508c53c1d3",
+            "name": "Get All Permissions",
+            "url": "http://localhost:8080/api/v1/permission/getpermissions",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2025-07-15T16:47:59.180Z",
+            "modified": "2025-07-15T16:48:20.670Z",
+            "headers": []
+        },
+        {
+            "_id": "52394f78-139a-41e0-a54d-509c9b877c5c",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "26f890d4-f0b5-41b0-ba4e-7f508c53c1d3",
+            "name": "Save Permission",
+            "url": "http://localhost:8080/api/v1/permission/savepermission",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2025-07-15T16:49:27.949Z",
+            "modified": "2025-07-15T17:16:46.081Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 45,\n  \"name\": \"delete_post\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "160f1ad2-725d-4f4d-a58b-7181c710348b",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "26f890d4-f0b5-41b0-ba4e-7f508c53c1d3",
+            "name": "Update Permission",
+            "url": "http://localhost:8080/api/v1/permission/updatepermission/5",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2025-07-15T17:17:26.232Z",
+            "modified": "2025-07-15T17:22:48.193Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 8,\n  \"name\": \"read_user\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "7c613c71-723b-45e2-b6a9-9723eea421ed",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "26f890d4-f0b5-41b0-ba4e-7f508c53c1d3",
+            "name": "Delete Permission",
+            "url": "http://localhost:8080/api/v1/permission/deletepermission/5",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2025-07-15T17:23:13.516Z",
+            "modified": "2025-07-15T17:24:39.277Z",
+            "headers": []
+        },
+        {
+            "_id": "5aff0d8a-8dbb-4f2f-a2a6-6eaf574bc4f2",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "37ee0a68-c7d2-47d2-9acc-1ccffdb28c62",
+            "name": "Get Roles",
+            "url": "http://localhost:8080/api/v1/role/getroles",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2025-07-15T17:25:03.212Z",
+            "modified": "2025-07-15T17:25:29.222Z",
+            "headers": []
+        },
+        {
+            "_id": "40d7084d-4f63-49e1-b00a-8f037891e7ba",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "37ee0a68-c7d2-47d2-9acc-1ccffdb28c62",
+            "name": "Save Role",
+            "url": "http://localhost:8080/api/v1/role/saverole",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2025-07-15T17:26:10.628Z",
+            "modified": "2025-07-15T17:46:44.231Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 1,\n  \"name\": \"Author\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "20005433-9448-4cd4-92d6-c4547bbf35ea",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "37ee0a68-c7d2-47d2-9acc-1ccffdb28c62",
+            "name": "Update Role",
+            "url": "http://localhost:8080/api/v1/role/updaterole/52",
+            "method": "PUT",
+            "sortNum": 110000,
+            "created": "2025-07-15T17:47:13.454Z",
+            "modified": "2025-07-15T17:58:22.664Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Writer\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "7aa6342c-8f1c-4dee-b082-bfa2d207e4a4",
+            "colId": "f2735bbe-b078-4e28-a306-78e31fd8421a",
+            "containerId": "37ee0a68-c7d2-47d2-9acc-1ccffdb28c62",
+            "name": "Delete Role",
+            "url": "http://localhost:8080/api/v1/role/deleterole/52",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2025-07-15T17:58:43.080Z",
+            "modified": "2025-07-15T17:59:10.269Z",
+            "headers": []
         }
     ],
-    "ref": "WRI7IXoIuzreppYWz4H1pbLpB2T3o9FQxT5on8jkc_-QHhAaCyoQ4HgQkL7Q4FTUagua-E5fRkC7CoBF0VlZbw"
+    "ref": "WRI7IXoIuzreppYWz4H1pVc-CugK-aKs8r47XBvxiPjHc2X0GnFR__Zj8DTMajeLGJ72k-MFWhapZO7noS3CGw"
 }

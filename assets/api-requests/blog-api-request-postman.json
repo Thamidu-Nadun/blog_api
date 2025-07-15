@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "8fd40b10-9624-40d4-85c9-da1df123d4e4",
+        "_postman_id": "1e1757ce-e23f-479b-88a1-a3fa9e8b85d1",
         "name": "Blog",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -114,6 +114,216 @@
         {
             "name": "Post",
             "item": []
+        },
+        {
+            "name": "Role",
+            "item": [
+                {
+                    "name": "Get Roles",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/role/getroles",
+                            "path": [
+                                "api",
+                                "v1",
+                                "role",
+                                "getroles"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        }
+                    }
+                },
+                {
+                    "name": "Save Role",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/role/saverole",
+                            "path": [
+                                "api",
+                                "v1",
+                                "role",
+                                "saverole"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"id\": 1,\n  \"name\": \"Author\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Update Role",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/role/updaterole/52",
+                            "path": [
+                                "api",
+                                "v1",
+                                "role",
+                                "updaterole",
+                                "52"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Writer\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Role",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/role/deleterole/52",
+                            "path": [
+                                "api",
+                                "v1",
+                                "role",
+                                "deleterole",
+                                "52"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Permission",
+            "item": [
+                {
+                    "name": "Get All Permissions",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/permission/getpermissions",
+                            "path": [
+                                "api",
+                                "v1",
+                                "permission",
+                                "getpermissions"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        }
+                    }
+                },
+                {
+                    "name": "Save Permission",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/permission/savepermission",
+                            "path": [
+                                "api",
+                                "v1",
+                                "permission",
+                                "savepermission"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"id\": 45,\n  \"name\": \"delete_post\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Update Permission",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/permission/updatepermission/5",
+                            "path": [
+                                "api",
+                                "v1",
+                                "permission",
+                                "updatepermission",
+                                "5"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"id\": 8,\n  \"name\": \"read_user\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Permission",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/permission/deletepermission/5",
+                            "path": [
+                                "api",
+                                "v1",
+                                "permission",
+                                "deletepermission",
+                                "5"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        }
+                    }
+                }
+            ]
         }
     ]
 }
