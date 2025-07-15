@@ -1,6 +1,7 @@
 package nadun_blog.service;
 
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -110,11 +111,40 @@ public class PermissionService {
 
     public HashSet<Permissions> getDefaultPermissions() {
         HashSet<Permissions> permissions = new HashSet<>();
-        Permissions read_post = permissionRepo.findByName("read_post")
-                .orElseGet(
-                        () -> modelMapper.map(savePermission(new PermissionDTO(null, "read_post")), Permissions.class));
-        permissions.add(read_post);
-
+        permissions.addAll(getUserPermissions());
         return permissions;
     }
+
+    private HashSet<Permissions> getUserPermissions() {
+        HashSet<Permissions> userPermissions = new HashSet<>();
+
+        // Post
+        Permissions read_post = getOrCreatePermission("read_post");
+        userPermissions.add(read_post);
+
+        // Comment
+        Permissions create_comment = getOrCreatePermission("create_comment");
+        Permissions read_comment = getOrCreatePermission("read_comment");
+        Permissions update_comment = getOrCreatePermission("update_comment");
+        Permissions delete_comment = getOrCreatePermission("delete_comment");
+
+        userPermissions.addAll(Arrays.asList(create_comment, read_comment, update_comment, delete_comment));
+
+        // Like
+        Permissions create_like = getOrCreatePermission("create_like");
+        Permissions read_like = getOrCreatePermission("read_like");
+        Permissions delete_like = getOrCreatePermission("delete_like");
+
+        userPermissions.addAll(Arrays.asList(create_like, read_like, delete_like));
+
+        return userPermissions;
+
+    }
+
+    private Permissions getOrCreatePermission(String name) {
+        return permissionRepo.findByName(name)
+                .orElseGet(
+                        () -> modelMapper.map(savePermission(new PermissionDTO(null, name)), Permissions.class));
+    }
+
 }
