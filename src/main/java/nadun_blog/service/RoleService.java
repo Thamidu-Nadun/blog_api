@@ -3,6 +3,7 @@ package nadun_blog.service;
 import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -19,6 +20,9 @@ import nadun_blog.util.exceptions.DataSaveFailureException;
 public class RoleService {
     @Autowired
     private RoleRepo roleRepo;
+
+    @Autowired
+    private PermissionService permissionService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -62,7 +66,7 @@ public class RoleService {
      * @return RoleDTO | null
      */
     public RoleDTO saveRole(RoleDTO roleDTO) {
-        HashSet<Permissions> defaultPermissions = new HashSet<>();
+        Set<Permissions> defaultPermissions = permissionService.getDefaultPermissions();
         try {
             Role role = new Role(null, roleDTO.getName() != null ? roleDTO.getName() : "User", defaultPermissions);
             Role savedRole = roleRepo.save(role);
