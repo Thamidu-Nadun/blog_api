@@ -2,7 +2,6 @@ package nadun_blog.model;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Role {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
     private String name;
 
     @ManyToMany
