@@ -1,7 +1,9 @@
 package nadun_blog.service;
 
 import java.lang.reflect.Type;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -105,5 +107,15 @@ public class PermissionService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public Set<Permissions> getDefaultPermissions() {
+        Set<Permissions> permissions = new HashSet<>();
+        Permissions read_post = permissionRepo.findById(1)
+                .orElseGet(
+                        () -> modelMapper.map(savePermission(new PermissionDTO(null, "read_post")), Permissions.class));
+        permissions.add(read_post);
+
+        return permissions;
     }
 }
