@@ -91,4 +91,19 @@ public class ArticleService {
             return null;
         }
     }
+
+    public Article deleteArticle(Long post_id) {
+        try {
+            Article post = articleRepo.findById(post_id).orElse(null);
+            if (post != null) {
+
+                articleRepo.deleteById(post_id);
+                return post;
+            } else {
+                throw new DataAccessFailureException();
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
