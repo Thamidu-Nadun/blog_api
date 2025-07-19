@@ -19,7 +19,16 @@
         <license />
     </licenses>
     <developers>
-        <developer />
+        <developer>
+            <id>nadun</id>
+            <name>Thamidu Nadun</name>
+            <email>nadunrz101doe@gmail.com</email>
+            <roles>
+                <role>developer</role>
+                <role>maintainer</role>
+            </roles>
+            <timezone>+5.30</timezone>
+        </developer>
     </developers>
     <scm>
         <connection />
