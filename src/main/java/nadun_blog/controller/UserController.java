@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import nadun_blog.DTO.Response;
 import nadun_blog.DTO.UserDTO;
 import nadun_blog.service.UserService;
+import nadun_blog.util.ControllerUtil;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin
 @RestController
@@ -97,6 +99,24 @@ public class UserController {
             response.setResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                     HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/verify/{token}")
+    public ResponseEntity<Response> verifyUser(@RequestParam UUID user_id, @PathVariable String token) {
+        Response response = new Response();
+        try {
+            if (userService.verifyUser(user_id, token)) {
+                response.setResponse(HttpStatus.OK.value(), HttpStatus.OK.getReasonPhrase(), true);
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+                response.setResponse(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), false);
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            response.setResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), null);
+            return ControllerUtil.getInternalServerError(response);
         }
     }
 

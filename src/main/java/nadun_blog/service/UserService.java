@@ -124,4 +124,29 @@ public class UserService {
             return null;
         }
     }
+
+    public boolean verifyUser(UUID id, String verificationCode) {
+        try {
+            User user = userRepo.findById(id).orElse(null);
+            if (user != null) {
+                String userToken = user.getVerificationCode();
+                if (userToken != null) {
+                    if (userToken.equals(verificationCode)) {
+                        user.setVerificationCode(null);
+                        user.setVerified(true);
+                        userRepo.save(user);
+                        return true;
+                    } else { // Not Valid Token
+                        return false;
+                    }
+                } else { // No Token Found
+                    return false;
+                }
+            } else { // User Not Found
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
