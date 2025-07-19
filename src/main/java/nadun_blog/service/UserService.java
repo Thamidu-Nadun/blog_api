@@ -14,6 +14,7 @@ import nadun_blog.DTO.UserDTO;
 import nadun_blog.model.Role;
 import nadun_blog.model.User;
 import nadun_blog.repo.UserRepo;
+import nadun_blog.util.SecureUtils;
 
 @Service
 public class UserService {
@@ -60,13 +61,14 @@ public class UserService {
             throw new RuntimeException("Default role not found. Please create a default role first.");
         }
         try {
+            String token = SecureUtils.generateVerificationToken(userDTO.getEmail());
             User user = new User(
                     null, // UUID (generated)
                     userDTO.getUsername(), // username
                     userDTO.getPassword(), // password (hash in real app)
                     userDTO.getEmail(), // email
                     false, // isVerified
-                    null, // verificationCode
+                    token, // verificationCode
                     new Timestamp(System.currentTimeMillis()), // createdAt
                     defaultRole // role
             );
