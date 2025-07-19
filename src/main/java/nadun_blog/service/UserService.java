@@ -125,6 +125,13 @@ public class UserService {
         }
     }
 
+    /**
+     * Verify the user
+     * 
+     * @param id
+     * @param verificationCode
+     * @return boolean
+     */
     public boolean verifyUser(UUID id, String verificationCode) {
         try {
             User user = userRepo.findById(id).orElse(null);

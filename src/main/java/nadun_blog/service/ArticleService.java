@@ -65,6 +65,13 @@ public class ArticleService {
         }
     }
 
+    /***
+     * Update article safely. [PATCH]
+     * 
+     * @param id
+     * @param article
+     * @return
+     */
     public Article updateArticle(Long id, ArticleDTO article) {
         try {
             Article post = articleRepo.findById(id).orElse(null);
@@ -92,6 +99,12 @@ public class ArticleService {
         }
     }
 
+    /**
+     * Delete User
+     * 
+     * @param post_id
+     * @return
+     */
     public Article deleteArticle(Long post_id) {
         try {
             Article post = articleRepo.findById(post_id).orElse(null);
