@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "1e1757ce-e23f-479b-88a1-a3fa9e8b85d1",
+        "_postman_id": "cb5c4367-a34d-463f-bfa0-cf72f96ab7dd",
         "name": "Blog",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -85,7 +85,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"username\": \"Kyle Cook\",\n  \"email\": \"kyle@gmail.com\",\n  \"password\": \"cooked\"\n}"
+                            "raw": "{\n  \"username\": \"Kyle Cook\",\n  \"email\": \"k@gmail.com\",\n  \"password\": \"cooked\"\n}"
                         }
                     }
                 },
@@ -113,7 +113,57 @@
         },
         {
             "name": "Post",
-            "item": []
+            "item": [
+                {
+                    "name": "Get Posts",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/articles/getarticles",
+                            "path": [
+                                "api",
+                                "v1",
+                                "articles",
+                                "getarticles"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        }
+                    }
+                },
+                {
+                    "name": "Creare Post",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8080/api/v1/articles/addarticle",
+                            "path": [
+                                "api",
+                                "v1",
+                                "articles",
+                                "addarticle"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"Test Article\",\n  \"description\": \"Some body text\",\n  \"authorId\": \"21350ec3-4130-4655-a6be-a7e2490b2063\",\n  \"cover_image\": {\n    \"url\": \"https://example.com/img.jpg\",\n    \"type\": \"IMAGE\",\n    \"alt_text\": \"Image description\"\n  }\n}"
+                        }
+                    }
+                }
+            ]
         },
         {
             "name": "Role",
@@ -163,7 +213,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"id\": 1,\n  \"name\": \"Author\"\n}"
+                            "raw": "{\n  \"id\": 1,\n  \"name\": \"Guest\"\n}"
                         }
                     }
                 },

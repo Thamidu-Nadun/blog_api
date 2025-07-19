@@ -125,4 +125,13 @@ public class RoleService {
             return false; // Deletion failed
         }
     }
+
+    public Role getDefaultRole() {
+        return getOrCreateRole("User");
+    }
+
+    private Role getOrCreateRole(String roleName) {
+        return roleRepo.findByName(roleName)
+                .orElseGet(() -> roleRepo.save(new Role(null, roleName, permissionService.getDefaultPermissions())));
+    }
 }

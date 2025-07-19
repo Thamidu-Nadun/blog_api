@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nadun_blog.DTO.UserDTO;
+import nadun_blog.model.Role;
 import nadun_blog.model.User;
 import nadun_blog.repo.UserRepo;
 
@@ -20,6 +21,9 @@ public class UserService {
     private UserRepo userRepo;
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private RoleService roleService;
 
     /**
      * This method retrieves all users from the database and maps them to a
@@ -51,10 +55,21 @@ public class UserService {
      * @author nadun
      */
     public UserDTO addUser(UserDTO userDTO) {
+        Role defaultRole = roleService.getDefaultRole();
+        if (defaultRole == null) {
+            throw new RuntimeException("Default role not found. Please create a default role first.");
+        }
         try {
-            User user = new User(null, userDTO.getUsername(), userDTO.getPassword(), userDTO.getEmail(), false, null,
-                    new Timestamp(System.currentTimeMillis()),
-                    null);
+            User user = new User(
+                    null, // UUID (generated)
+                    userDTO.getUsername(), // username
+                    userDTO.getPassword(), // password (hash in real app)
+                    userDTO.getEmail(), // email
+                    false, // isVerified
+                    null, // verificationCode
+                    new Timestamp(System.currentTimeMillis()), // createdAt
+                    defaultRole // role
+            );
             return modelMapper.map(userRepo.save(user), UserDTO.class);
         } catch (Exception e) {
             e.printStackTrace();
