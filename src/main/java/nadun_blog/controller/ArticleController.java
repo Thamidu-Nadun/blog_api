@@ -92,7 +92,8 @@ public class ArticleController {
     }
 
     @PutMapping("/updatearticle")
-    public ResponseEntity<Response> updateArticle(@RequestParam Long post_id, @RequestBody ArticleDTO article) {
+    public ResponseEntity<Response> updateArticle(@Valid @RequestParam(required = true) Long post_id,
+            @RequestBody ArticleDTO article) {
         Response response = new Response();
         try {
             Article updatedArticle = articleService.updateArticle(post_id, article);
@@ -115,7 +116,7 @@ public class ArticleController {
     }
 
     @DeleteMapping("/deletearticle/{post_id}")
-    public ResponseEntity<Response> deleteArticle(@PathVariable Long post_id) {
+    public ResponseEntity<Response> deleteArticle(@PathVariable(required = true) Long post_id) {
         Response response = new Response();
         try {
             Article deletedArticle = articleService.deleteArticle(post_id);
